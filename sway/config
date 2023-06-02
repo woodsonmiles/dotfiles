@@ -19,7 +19,7 @@ set $term foot
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu fuzzel
-
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always {
   gsettings set org.gnome.desktop.interface gtk-theme "Gruvbox-Material-Dark"
   gsettings set org.gnome.desktop.interface icon-theme "Gruvbox-Material-Dark"

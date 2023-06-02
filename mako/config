@@ -1,0 +1,38 @@
+markup=1
+actions=1
+
+# Format
+font=Fira Code 16
+border-color=#002028
+border-size=2
+background-color=#002b36D9
+text-color=#93a1a1
+border-color=#268bd2
+format=<b>%s</b> <span color="#93a1a1">(%a)</span>\n%b
+default-timeout=3000
+
+# icons
+icon-path=/usr/share/icons/Papirus-Adapta-Nokto-Maia:/usr/share/icons/Papirus-Maia:/usr/share/icons/Papirus
+
+# Hidden format
+[hidden]
+format=Hidden: %h [%t]
+
+[urgency=low]
+text-color=#93a1a1
+
+[urgency=low actionable]
+border-color=#93a1a1
+
+[urgency=normal actionable]
+border-color=#268bd2
+
+[urgency=high]
+border-color=#9c2220
+
+[urgency=high actionable]
+border-color=#6c71c4
+
+max-icon-size=96
+
+
