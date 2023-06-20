@@ -312,7 +312,7 @@ require('nvim-treesitter.configs').setup {
   auto_install = false,
 
   highlight = { enable = true },
-  indent = { enable = true },
+  indent = { enable = true, disable = {'python', 'yaml' } },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -367,6 +367,11 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+-- Treesitter Folding
+vim.o.foldlevel = 20
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -484,7 +489,7 @@ cmp.setup {
     ['<C-Space>'] = cmp.mapping.complete {},
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     },
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -513,3 +518,32 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+
+-- [[ Custom Settings ]] --
+
+-- General file settings
+vim.opt.textwidth = 100
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+-- No mouse
+vim.opt.mouse = ""
+-- Underline cursor row
+vim.opt.cursorline = true
+
+--Highlight trailing whitespace
+vim.cmd([[
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+]])
+
+-- Caps version of Save and Quit
+vim.api.nvim_create_user_command('WQ', 'wq', {})
+vim.api.nvim_create_user_command('Wq', 'wq', {})
+vim.api.nvim_create_user_command('W', 'w', {})
+vim.api.nvim_create_user_command('Q', 'q', {})
+
+-- Set Swap Dir
+vim.cmd([[
+set dir=~/tmp
+]])
