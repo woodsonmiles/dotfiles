@@ -14,8 +14,6 @@
     "backlight",
     "network",
     "clock",
-    "battery",
-    "custom/power"
   ],
   "pulseaudio": {
     "tooltip": false,
@@ -98,24 +96,6 @@
     "on-scroll-down": "brightnessctl s 5%- && notify-brighness",
     "smooth-scrolling-threshold": 1,
   },
-  "battery": {
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 20
-    },
-    "format": "{icon}  {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
-  },
   "tray": {
     "icon-size": 18,
     "spacing": 10
@@ -157,12 +137,6 @@
     "format": " ",
     "on-click": "rofi -show run",
     "on-click-right": "killall rofi"
-  },
-  "custom/power": {
-    "format": "襤",
-    /* "on-click": "bash ~/.config/rofi/leave/leave.sh", */
-    /* "on-click":"rofi-powermenu" */
-    "on-click": "wlogout -p layer-shell"
   },
   "custom/updates": {
     "format": "{} Update(s)",

@@ -35,3 +35,9 @@ alias gst='git stash'
 autoload -Uz compinit && compinit
 
 alias vim='/usr/bin/nvim'
+alias h='Hyprland'
+
+# Home, End, and Del key
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
