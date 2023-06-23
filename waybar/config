@@ -3,28 +3,31 @@
   "layer": "top",
   "modules-left": [
     "custom/launcher",
-    "tray",
     "cpu",
     "memory",
-    "custom/mpc"
+    "custom/mpc",
+    "hyprland/window"
   ],
     "modules-center": ["wlr/workspaces"],
     "modules-right": [
     "pulseaudio",
-    "backlight",
     "network",
     "clock",
   ],
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true
+  },
   "pulseaudio": {
     "tooltip": false,
     "scroll-step": 5,
     "format": " {icon} {volume}%",
-    "format-muted": " 婢 {volume}%",
+    "format-muted": " <span font=\"Font Awesome 6 Free\">婢</span> {volume}%",
     "format-icons": {
       "default": [
-        "奄",
-        "奔",
-        "墳"
+        "<span font=\"Font Awesome 6 Free\">奄</span>",
+        "<span font=\"Font Awesome 6 Free\">奔</span>",
+        "<span font=\"Font Awesome 6 Free\">墳</span>"
       ]
     },
     "on-click": "pamixer -t && notify-volume",
@@ -75,34 +78,13 @@
     },
     "on-click": "foot -e nmtui",
   },
-  "backlight": {
-    /*	"tooltip": false,
-		"format": " {}%",
-		"interval":1,
-        "on-scroll-up": "brightnessctl s +5%",
-		"on-scroll-down": "brightnessctl s 5%-" */
-    "interval": 2,
-    "align": 0,
-    "rotate": 0,
-    "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      ""
-    ],
-    "on-click": "toggle-wlsunset",
-    "on-scroll-up": "brightnessctl s +5% && notify-brightness",
-    "on-scroll-down": "brightnessctl s 5%- && notify-brighness",
-    "smooth-scrolling-threshold": 1,
-  },
   "tray": {
     "icon-size": 18,
     "spacing": 10
   },
   "clock": {
-    "format": "{: %I:%M %p }",
-    "format-alt": "{: %I:%M %p   %d/%m/%Y}"
+    "format": "{:%I:%M %p }",
+    "format-alt": "{:%I:%M %p  %d/%m/%Y}"
   },
   "cpu": {
     "interval": 15,
