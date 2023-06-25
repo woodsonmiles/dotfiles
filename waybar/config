@@ -21,14 +21,20 @@
   "pulseaudio": {
     "tooltip": false,
     "scroll-step": 5,
-    "format": " {icon} {volume}%",
-    "format-muted": " <span font=\"Font Awesome 6 Free\">婢</span> {volume}%",
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
     "format-icons": {
-      "default": [
-        "<span font=\"Font Awesome 6 Free\">奄</span>",
-        "<span font=\"Font Awesome 6 Free\">奔</span>",
-        "<span font=\"Font Awesome 6 Free\">墳</span>"
-      ]
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
     },
     "on-click": "pamixer -t && notify-volume",
     "on-scroll-up": "pamixer -i 5 && notify-volume",
@@ -73,7 +79,7 @@
         " "
       ],
       "disconnected": [
-        "睊"
+        "⚠"
       ],
     },
     "on-click": "foot -e nmtui",
@@ -83,8 +89,8 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{:%I:%M %p }",
-    "format-alt": "{:%I:%M %p  %d/%m/%Y}"
+    "format": "{:%OI:%M %p }",
+    "format-alt": "{:%l:%M %p  %d/%m/%Y}"
   },
   "cpu": {
     "interval": 15,

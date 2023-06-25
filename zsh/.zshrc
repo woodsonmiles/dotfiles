@@ -36,8 +36,15 @@ autoload -Uz compinit && compinit
 
 alias vim='/usr/bin/nvim'
 alias h='Hyprland'
+alias x-www-browser='opera'
 
 # Home, End, and Del key
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 bindkey  "^[[3~"  delete-char
+
+# Quick Git
+function qc() {
+  git commit -am "$*"
+  git push
+}
