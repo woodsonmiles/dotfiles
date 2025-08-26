@@ -4,6 +4,18 @@ A repository for version tracking your dot files.
 
 ## Setup
 
+### Installing Stow
+
+This project is made to work with GNU stow. This allows for easy and effective dotfile version tracking and management.
+
+Stow can be installed from most package managers
+
+`apt install stow`
+
+`dnf install stow`
+
+For further installation guidance see this [guide](https://linuxconfig.org/how-to-use-gnu-stow-to-manage-programs-installed-from-source-and-dotfiles) from LinuxConfig.org. For usage of stow see the [Using](#using) section below.
+
 ### Recommended Step
 
 [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repo
@@ -30,7 +42,7 @@ git clone https://gitlab.hawkeye.afds.dev/devops/dotfiles.git "${HOME}"/dotfiles
 
 ### Stow
 
-The repo is setup to be managed using [GNU stow](https://www.gnu.org/software/stow/). For the most up to date usage of stow, please see the [manual]((https://www.gnu.org/software/stow/manual/)) or utilize the man pages: `man stow`.
+The dotfiles repo is setup to be managed using [GNU stow](https://www.gnu.org/software/stow/). For the most up to date usage of stow, please see the [manual]((https://www.gnu.org/software/stow/manual/)) or utilize the man pages: `man stow`.
 
 For starting, [Using GNU Stow to manage your dotfiles](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) is an easy and succinct rundown.
 
