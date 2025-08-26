@@ -23,3 +23,19 @@ fork to your machine using one of the commands below, depending on your OS.
 ```sh
 git clone https://gitlab.hawkeye.afds.dev/devops/dotfiles.git "${HOME}"/dotfiles
 ```
+
+## Using
+
+### Stow
+
+The repo is setup to be managed using [GNU stow](https://www.gnu.org/software/stow/). For the most up to date usage of stow, please see the [manual]((https://www.gnu.org/software/stow/manual/)) or utilize the man pages: `man stow`.
+
+For starting, [Using GNU Stow to manage your dotfiles](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) is an easy and succinct rundown.
+
+#### A poor man's usage guide
+
+Config files are grouped by program. Each folder in the dotfiles directory generally houses the config files for that program. They can be "stowed" as such:
+
+`stow nvim` --> to soft link the configs giving the structure and files in the /dotfiles/nvim/ directory
+
+`stow -D nvim` --> to remove previously "stowed" soft linked configs giving the structure and files in the /dotfiles/nvim/ directory
