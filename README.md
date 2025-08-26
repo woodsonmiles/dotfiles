@@ -48,6 +48,6 @@ For starting, [Using GNU Stow to manage your dotfiles](https://brandon.invergo.n
 
 Config files are grouped by program. Each folder in the dotfiles directory generally houses the config files for that program. They can be "stowed" as such:
 
-`stow nvim` --> to soft link the configs given the structure and files in the /dotfiles/nvim/ directory
+`stow nvim` --> to [soft link](https://www.redhat.com/en/blog/linking-linux-explained) the configs given the structure and files in the /dotfiles/nvim/ directory
 
 `stow -D nvim` --> to remove previously "stowed" soft linked configs given the structure and files in the /dotfiles/nvim/ directory
