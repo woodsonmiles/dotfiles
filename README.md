@@ -12,7 +12,7 @@ Stow can be installed from most package managers e.g.
 
 `apt install stow` or `dnf install stow`
 
-For further installation guidance see this [guide](https://linuxconfig.org/how-to-use-gnu-stow-to-manage-programs-installed-from-source-and-dotfiles) from LinuxConfig.org. For usage of stow see the [Using](#using) section below.
+For further installation guidance see this [guide](https://linuxconfig.org/how-to-use-gnu-stow-to-manage-programs-installed-from-source-and-dotfiles) from LinuxConfig.org. For usage of stow see the [Usage](#usage) section below.
 
 ### Recommended Step
 
@@ -36,7 +36,7 @@ If you have your own forks of the submodules you may want to update your fork of
 git clone https://gitlab.hawkeye.afds.dev/devops/dotfiles.git "${HOME}"/dotfiles
 ```
 
-## Using
+## Usage
 
 ### Stow
 
