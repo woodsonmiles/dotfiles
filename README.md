@@ -14,6 +14,8 @@ fork to your machine using one of the commands below, depending on your OS.
 > Your fork's URL will be something like this:
 > `https://gitlab.hawkeye.afds.dev/<your_gitlab_username>/dotfiles.git`
 
+If you have your own forks of the submodules you may want to update your fork of this repository to point to your forked submodules.
+
 ### Clone dotfiles
 
 > [!NOTE]
