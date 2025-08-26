@@ -8,11 +8,9 @@ A repository for version tracking your dot files.
 
 This project is made to work with GNU stow. This allows for easy and effective dotfile version tracking and management.
 
-Stow can be installed from most package managers
+Stow can be installed from most package managers e.g.
 
-`apt install stow`
-
-`dnf install stow`
+`apt install stow` or `dnf install stow`
 
 For further installation guidance see this [guide](https://linuxconfig.org/how-to-use-gnu-stow-to-manage-programs-installed-from-source-and-dotfiles) from LinuxConfig.org. For usage of stow see the [Using](#using) section below.
 
