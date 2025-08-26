@@ -2,6 +2,10 @@
 
 A repository for version tracking your dot files.
 
+## Onboarding Documentation
+
+See the [onboarding documentation](docs/onboarding.md) for additional environment setup and general onboarding documentation.
+
 ## Setup
 
 ### Installing Stow
