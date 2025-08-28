@@ -1,57 +1,78 @@
 # dotfiles
 
-A repository for version tracking your dot files.
+A repository of configurations for a linux development environment.
 
-## Onboarding Documentation
+## Content and References
 
-See the [onboarding documentation](docs/onboarding.md) for additional environment setup and general onboarding documentation.
+- [Onboarding](/docs/onboarding.md)
+- [Setup](#setup)
+- [Contributing](#contributing)
+- [Forking Workflow](#forking-workflow)
 
 ## Setup
 
-### Installing Stow
+### Prerequisites
 
-This project is made to work with GNU stow. This allows for easy and effective dotfile version tracking and management.
+- Computer must be setup to run a linux OS.\
+  For guidance on setting up your Windows computer with a WSL linux environment see [onboarding](/docs/onboarding.md#windows-prerequisites).
 
-Stow can be installed from most package managers e.g.
+### Install
 
-`apt install stow` or `dnf install stow`
+1. Install [GNU stow](https://www.gnu.org/software/stow/) to manage disparate configurations in a central location
+   - For Debian flavors use `apt install stow`
+   - For Red Hat flavors use `dnf install stow`
+   - Further installation guidance is available [here](https://linuxconfig.org/how-to-use-gnu-stow-to-manage-programs-installed-from-source-and-dotfiles)
+1. Clone the repo into your home directory\
+   **Note**: See the below [forking workflow](#forking-workflow) if you want
+   to avoid storing others' personal branches.
 
-For further installation guidance see this [guide](https://linuxconfig.org/how-to-use-gnu-stow-to-manage-programs-installed-from-source-and-dotfiles) from LinuxConfig.org. For usage of stow see the [Usage](#usage) section below.
+   ```sh
+   git clone https://gitlab.hawkeye.afds.dev/devops/dotfiles.git "${HOME}"/dotfiles
+   ```
 
-### Recommended Step
+1. Create a branch to store your personal changes
 
-[Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) this repo
-so that you have your own copy that you can modify, then install by cloning the
-fork to your machine using one of the commands below, depending on your OS.
+   ```sh
+   cd ~/dotfiles
+   git switch -c my-name
+   ```
 
-> [!NOTE]
-> Your fork's URL will be something like this:
-> `https://gitlab.hawkeye.afds.dev/<your_gitlab_username>/dotfiles.git`
+1. Stow the configurations of each desired application\
+   This will create symlinks where the applications expect their config files
+   to be.
 
-If you have your own forks of the submodules you may want to update your fork of this repository to point to your forked submodules.
+   ```sh
+   cd ~/dotfiles/
+   stow nvim
+   stow ...
+   ```
 
-### Clone dotfiles
+   For additional guidance see this [quick guide](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) to managing dotfiles with stow and the [stow manual](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) also available by running `man stow`.
 
-> [!NOTE]
-> If following the recommended step above (i.e., forking the repo), replace
-> `devops` with `<your_gitlab_username>` in the commands below
+1. Personalize the configurations to your liking.\
+   If you have your own forks of any included submodules, you may want to update
+   your fork to point to your submodules.
+1. Save your changes remotely.
 
-```sh
-git clone https://gitlab.hawkeye.afds.dev/devops/dotfiles.git "${HOME}"/dotfiles
-```
+   ```sh
+   git commit -am "my commit message"
+   git push
+   ```
 
-## Usage
+## Contributing
 
-### Stow
+If you have changes in your fork you would like to contribute to main for others
+to use, follow these steps.
 
-The dotfiles repo is setup to be managed using [GNU stow](https://www.gnu.org/software/stow/). For the most up to date usage of stow, please see the [manual]((https://www.gnu.org/software/stow/manual/)) or utilize the man pages: `man stow`.
+1. Create a branch with the commits you wish to merge into main.
+1. Create a merge request to merge that branch into main.
+1. Post the request in the merge requests channel and tag one of the repo maintainers.
 
-For starting, [Using GNU Stow to manage your dotfiles](https://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) is an easy and succinct rundown.
+## Forking Workflow
 
-#### A poor man's usage guide
+Some may wish to fork the repo rather than clone it to avoid storing the personal
+branches of other users. See the following instructions from gitlab:
 
-Config files are grouped by program. Each folder in the dotfiles directory generally houses the config files for that program. They can be "stowed" as such:
-
-`stow nvim` --> to [soft link](https://www.redhat.com/en/blog/linking-linux-explained) the configs given the structure and files in the /dotfiles/nvim/ directory
-
-`stow -D nvim` --> to remove previously "stowed" soft linked configs given the structure and files in the /dotfiles/nvim/ directory
+- [Creating the fork](https://docs.gitlab.com/user/project/repository/forking_workflow/#create-a-fork)
+- [Updating the fork](https://docs.gitlab.com/user/project/repository/forking_workflow/#update-your-fork)
+- [Contributing to the original](https://docs.gitlab.com/user/project/repository/forking_workflow/#merge-changes-back-upstream)
