@@ -12,12 +12,20 @@ Install and setup WSL following [Microsoft's guide](https://learn.microsoft.com/
 
 For more advanced users the WSL distro [can be customized](https://learn.microsoft.com/en-us/windows/wsl/install#change-the-default-linux-distribution-installed).
 
+### Apple Prerequisites
+
+#### Neovim color support
+
+On MacOS the default terminal does not natively support true color. This breaks the color formatting for neovim.
+
+It is recommended to use an alternative terminal, such as [Ghostty](https://ghostty.org/docs/install/binary#homebrew) to avoid this problem.
+
 ### Neovim Setup
 
 Thats right! You too can have your very own stellar neovim development environment setup!
 
 > [!note]
-> This setup is intended for Unix based or WSL environments. For Windows machines that don't have a WSL environment please see the [Windows Prerequisites](#windows-prerequisites) section.
+> Neovim runs on a unix terminal environment. [Windows](#windows-prerequisites) and [Apple](#apple-prerequisites) users, see the respective sections on configuring a neovim-friendly terminal environment.
 
 Instructions to setup neovim can be found at the [devops/kickstart.nvim repository](https://gitlab.hawkeye.afds.dev/devops/kickstart.nvim).
 
