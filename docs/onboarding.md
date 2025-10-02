@@ -2,6 +2,12 @@
 
 A repository collection of useful onboarding resources
 
+## Tech-stack resources
+
+Resources and documentation for the tech-stacks we use can be found in the [tech-stack guide](./tech-stack.md).
+
+Note: The tech-stack guide is not conclusive. If you know resources that were a significant help to you for a tech-stack, feel free make a merge request :-D
+
 ## Setting up your environment
 
 ### Windows Prerequisites
