@@ -36,3 +36,47 @@ Thats right! You too can have your very own stellar neovim development environme
 Instructions to setup neovim can be found at the [devops/kickstart.nvim repository](https://gitlab.hawkeye.afds.dev/devops/kickstart.nvim).
 
 For further ease of dotfile management it is highly recommended to utilize the [devops/dotfiles repository](https://gitlab.hawkeye.afds.dev/devops/dotfiles), which works with the [devops/kickstart.nvim repository](https://gitlab.hawkeye.afds.dev/devops/kickstart.nvim) neovim config.
+
+### Nerd Font Setup
+
+Setup following these [instructions](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k).
+
+### Powerlevel10k Theme Setup
+
+0. Be sure [.zshrc](#zshrc-setup) has already been "stowed"
+
+    > [!warning]
+    > The Powerlevel10k Theme Setup depends on the [.zshrc config](#zshrc-setup) being already "stowed". It will not work without this being so.
+
+1. Stow the powerlevel10k dotfiles
+
+    > [!note]
+    > We want to get our *premium* powerlevel10k config setup before we install so that powerlevel10k doesn't try to generate it on install.
+
+    ```shell
+    cd ~/dotfiles \
+    && stow powerlevel10k
+    ```
+
+2. Install the recommended font: [Nerd Font Setup](#nerd-font-setup)
+
+3. Install powerlevel10k following its [github 'manual install' instructions](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#manual).
+
+### .zshrc Setup
+
+1. Move "machine local" changes
+
+    `~/.zshrc.local` is where you can keep local changes to your .zshrc config that you don't want part of the tracked dotfiles.
+
+    If you have .zshrc changes that fit that category move your "machine local" changes into `~/.zshrc.local`. The "stowed" .zshrc config will source it :-D
+
+2. Deploy stow .zshrc config
+
+    > [!note] the old ~/.zshrc may need to be deleted so stow can successfully recreate it
+
+    ```shell
+    cd ~/dotfiles \
+    && stow zshrc
+    ```
+
+3. Exit and reopen your shell

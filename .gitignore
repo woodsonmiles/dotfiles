@@ -1,10 +1,7 @@
-.*
+# Ignore Mac hidden files
+.DS_Store
 
 # Ignore vim files
 *~
 *.swp
 *.swo
-
-# Keep git config files (.gitkeep, .gitignore, .gitattributes, ...)
-!.git*
-
