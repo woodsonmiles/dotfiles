@@ -43,7 +43,7 @@ Setup following these [instructions](https://github.com/romkatv/powerlevel10k#me
 
 ### Powerlevel10k Theme Setup
 
-0. Be sure [.zshrc](#zshrc-setup) has already been "stowed"
+0. Be sure the [.zshrc setup steps](#zshrc-setup) have been completed.
 
     > [!warning]
     > The Powerlevel10k Theme Setup depends on the [.zshrc config](#zshrc-setup) being already "stowed". It will not work without this being so.
@@ -61,6 +61,32 @@ Setup following these [instructions](https://github.com/romkatv/powerlevel10k#me
 2. Install the recommended font: [Nerd Font Setup](#nerd-font-setup)
 
 3. Install powerlevel10k following its [github 'manual install' instructions](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#manual).
+
+### Zim (zsh Framework)
+
+0. Be sure the [.zshrc setup steps](#zshrc-setup) have been completed.
+
+    > [!warning]
+    > The Zim (zsh Framework) Setup depends on the [.zshrc config](#zshrc-setup) being already "stowed". It will not work without this being so.
+
+1. Stow the Zim dotfiles
+
+    > [!note]
+    > We want to get our *premium* Zim (zsh Framework) config setup before we install so that Zim (zsh Framework) doesn't try to generate it on install.
+
+    ```shell
+    cd ~/dotfiles \
+    && stow zim
+    ```
+
+2. Install the Zim (zsh Framework)
+
+    ```shell
+    # run the automatic installation script
+    curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+    ```
+
+    For the most up to date instructions see [zimfw/zimfw -> automatic installation](https://github.com/zimfw/zimfw?tab=readme-ov-file#automatic-installation)
 
 ### .zshrc Setup
 
