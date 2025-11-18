@@ -88,6 +88,22 @@ Setup following these [instructions](https://github.com/romkatv/powerlevel10k#me
 
     For the most up to date instructions see [zimfw/zimfw -> automatic installation](https://github.com/zimfw/zimfw?tab=readme-ov-file#automatic-installation)
 
+### zoxide setup
+
+0. Be sure the [.zshrc setup steps](#zshrc-setup) have been completed.
+
+    > [!warning]
+    > This Setup depends on the [.zshrc config](#zshrc-setup) being already "stowed". It will not work without this being so.
+
+1. Stow the zoxide dotfiles
+
+    ```shell
+    cd ~/dotfiles \
+    && stow zoxide
+    ```
+
+2. Install zoxide following [the project's github instructions](https://github.com/ajeetdsouza/zoxide#installation)
+
 ### .zshrc Setup
 
 1. Move "machine local" changes
