@@ -64,16 +64,16 @@ Setup following these [instructions](https://github.com/romkatv/powerlevel10k#me
 
 ### Tmux Configuration
 
-0. Install tmux for your system. Instructions to do so can be found at the [tmux/tmux repository](https://github.com/tmux/tmux/wiki/Installing).
+1. Install tmux for your system. Instructions to do so can be found at the [tmux/tmux repository](https://github.com/tmux/tmux/wiki/Installing).
 
-1. (Optional, but recommended) Install the Tmux Plugin Manager following the [tmux-plugins/tpm instructions](https://github.com/tmux-plugins/tpm#installation)
-
-2. Stow the Tmux dotfiles
+1. Stow the Tmux dotfiles
 
     ```shell
     cd ~/dotfiles \
     && stow tmux
     ```
+
+1. (Optional, but recommended) Install the Tmux Plugin Manager (tpm) following the [tmux-plugins/tpm instructions](https://github.com/tmux-plugins/tpm#installation)
 
 ### Zim (zsh Framework)
 
