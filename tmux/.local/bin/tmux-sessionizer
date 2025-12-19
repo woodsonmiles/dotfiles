@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# Sourced from https://github.com/Tonitum/tonitum/blob/master/config/tmux/tmux-sessionizer
+
+printAndExit() {
+  msg=$1
+  read -rp "$msg"
+  exit 0
+}
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    res=$(find ~/projects/ ~/personal/ ~/work/ -mindepth 1 -maxdepth 1 -type d)
+    res=("$res" new)
+    selected=$(printf "%s\n" "${res[@]}" | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+if [[ $selected == "new" ]]; then
+  echo "Setting up new project"
+  if ! read -rp "Enter project url: " repo < /dev/tty; then
+    printAndExit "No project URL entered, exiting"
+  fi
+
+  if [[ -z $repo ]]; then
+    printAndExit "No project URL entered, exiting"
+  fi
+
+  options=("work" "personal" "project")
+  project_type=$(printf "%s\n" "${options[@]}" | fzf --prompt "Project type? > ")
+  if [[ -z $project_type ]]; then
+    printAndExit "Project type not specified, exiting"
+  fi
+
+  if [[ ! -d "$HOME/$project_type" ]]; then
+    mkdir -p "$HOME/$project_type" 
+  fi
+
+  cd ~/"$project_type" || exit
+
+  if ! git clone --depth 1 --single-branch "$repo"; then
+    printAndExit "Git clone failed, exiting."
+  fi
+
+  folder_name=$(echo "$repo" | sed "s/.*\/\(.*\)\.git/\1/")
+  echo "$folder_name"
+
+  selected=$folder_name
+fi
+
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+    tmux a -t "$selected_name"
+    exit 0
+fi
+
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
+fi
+
+tmux switch-client -Et "$selected_name"
