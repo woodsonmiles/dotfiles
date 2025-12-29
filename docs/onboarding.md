@@ -26,6 +26,29 @@ On MacOS the default terminal does not natively support true color. This breaks 
 
 It is recommended to use an alternative terminal, such as [Ghostty](https://ghostty.org/docs/install/binary#homebrew) to avoid this problem.
 
+### [Eza](https://github.com/eza-community/eza) Setup
+
+0. Be sure the [.zshrc setup steps](#zshrc-setup) have been completed.
+
+    > [!warning]
+    > This setup depends on the [.zshrc config](#zshrc-setup) being already "stowed". It will not work without this being so.
+
+1. Install Eza following their [installation guide](https://github.com/eza-community/eza/blob/main/INSTALL.md).
+
+2. Stow the eza dotfiles
+
+    ```shell
+    cd ~/dotfiles \
+    && stow eza
+    ```
+
+3. Refresh your terminal and enjoy
+
+    ```shell
+    # If you don't want to exit your terminal
+    exec zsh
+    ```
+
 ### Neovim Setup
 
 Thats right! You too can have your very own stellar neovim development environment setup!
