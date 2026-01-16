@@ -49,6 +49,29 @@ It is recommended to use an alternative terminal, such as [Ghostty](https://ghos
     exec zsh
     ```
 
+### FZF (cli fuzzy finder) Setup
+
+0. Be sure the [.zshrc setup steps](#zshrc-setup) have been completed.
+
+    > [!warning]
+    > This setup depends on the [.zshrc config](#zshrc-setup) being already "stowed". It will not work without this being so.
+
+1. Stow the FZF dotfiles
+
+    ```shell
+    cd ~/dotfiles \
+    && stow fzf
+    ```
+
+2. Install FZF following their [installation guide](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
+
+3. Refresh your terminal and enjoy
+
+    ```shell
+    # If you don't want to exit your terminal
+    exec zsh
+    ```
+
 ### Neovim Setup
 
 Thats right! You too can have your very own stellar neovim development environment setup!
