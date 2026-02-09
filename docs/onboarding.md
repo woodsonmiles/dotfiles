@@ -108,6 +108,29 @@ Setup following these [instructions](https://github.com/romkatv/powerlevel10k#me
 
 3. Install powerlevel10k following its [github 'manual install' instructions](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#manual).
 
+### [Starship Prompt](https://starship.rs/)
+
+0. Be sure the [.zshrc setup steps](#zshrc-setup) have been completed.
+
+    > [!warning]
+    > This setup depends on the [.zshrc config](#zshrc-setup) being already "stowed". It will not work without this being so.
+
+1. Stow the Starship dotfiles
+
+    ```shell
+    cd ~/dotfiles \
+    && stow starship
+    ```
+
+2. Install Starship following their [installation guide](https://github.com/starship/starship#step-1-install-starship) (just step 1)
+
+3. Refresh your terminal and enjoy
+
+    ```shell
+    # If you don't want to exit your terminal
+    exec zsh
+    ```
+
 ### Tmux Configuration
 
 1. Install tmux for your system. Instructions to do so can be found at the [tmux/tmux repository](https://github.com/tmux/tmux/wiki/Installing).
