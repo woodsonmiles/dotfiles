@@ -1,0 +1,3 @@
+source ~/.local/share/omarchy/default/bash/aliases
+source ~/.local/share/omarchy/default/bash/envs
+source ~/.local/share/omarchy/default/bash/functions

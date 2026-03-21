@@ -11,7 +11,7 @@
 # Sets sane Zsh built-in environment options.
 zmodule environment
 # Provides handy git aliases and functions.
-zmodule git
+# zmodule git
 # Applies correct bindkeys for input events.
 zmodule input
 # Sets a custom terminal title.
@@ -27,8 +27,6 @@ zmodule utility
 zmodule duration-info
 # Exposes git repository status information to prompts, used by asciiship.
 zmodule git-info
-# A heavily reduced, ASCII-only version of the Spaceship and Starship prompts.
-zmodule asciiship
 
 #
 # Completion
@@ -53,4 +51,14 @@ zmodule zsh-users/zsh-history-substring-search
 # Fish-like autosuggestions for Zsh.
 zmodule zsh-users/zsh-autosuggestions
 # }}} End configuration added by Zim install
+# Core
+zmodule zimfw/exa
 
+# You Should Use
+zmodule MichaelAquilina/zsh-you-should-use
+
+# Go helpers (replacement for OMZ golang plugin)
+zmodule mafredri/zsh-async
+zmodule ohmyzsh/ohmyzsh --root plugins/golang
+
+zmodule ohmyzsh/ohmyzsh --root plugins/git
