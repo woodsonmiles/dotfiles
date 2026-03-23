@@ -1,3 +1,0 @@
-[submodule "nvim/.config/nvim"]
-	path = nvim/.config/nvim
-	url = https://gitlab.hawkeye.afds.dev/devops/kickstart.nvim.git
