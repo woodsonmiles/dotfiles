@@ -3,7 +3,22 @@
   "plugin": [
     "@mohak34/opencode-notifier@latest"
   ],
-  "autoupdate": false,
+  "autoupdate": false,  
+
+  "provider": {
+     "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3:8b": {
+          "tools": true
+        }
+      }
+    }
+  },
+
   "permission": {
     "bash": {
       "*": "allow",

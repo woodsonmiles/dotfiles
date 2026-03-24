@@ -1,0 +1,1 @@
+/home/wmiles/.config/omarchy/current/theme/neovim.lua
