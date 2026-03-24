@@ -18,3 +18,8 @@ function cb () {
   git branch | grep -v "main" | grep -v "master" | xargs git branch -d
  }
 
+#auto complete
+source <(kubectl completion zsh)
+source <(zarf completion zsh)
+
+
