@@ -1,5 +1,6 @@
 # env vars
-export TMPDIR=$HOME/tmp/
+export TMPDIR=/mnt/big/tmp
+
 # aliases
 alias md="mkdir -p"
 alias f="firefly"
@@ -21,5 +22,5 @@ function cb () {
 #auto complete
 source <(kubectl completion zsh)
 source <(zarf completion zsh)
-
+source <(firefly completion zsh)
 
