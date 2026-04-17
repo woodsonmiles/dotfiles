@@ -77,7 +77,9 @@
       "kubectl edit *": "ask",
       "kubectl apply *": "ask",
       "kubectl delete *": "ask",
-      "glab api *": "ask"
+      "glab api *": "ask",
+      "firefly deploy prd*": "ask",
+      "systemctl *": "ask"
     },
     "doom_loop": "ask",
     "external_directory": "allow"
