@@ -51,36 +51,6 @@ When running `firefly setup`, firefly creates the following folder structure in 
 | `firefly/manifests/` | Raw Kubernetes manifests |
 | `firefly/.gitignore` | Auto-generated gitignore (excludes secrets/, images/, *.tgz,*.zst) |
 
-### firefly.yaml Configuration
-
-The `firefly.yaml` file contains the project configuration:
-
-```yaml
-# Targets - map of target deployment environment names to configurations
-targets:
-  dev:
-    cluster: "arn:aws-us-gov:eks:us-gov-west-1:062032711895:cluster/dev"
-    kind: false
-    config:
-      DOMAIN: "cs-dev.afdk.org"
-  stg:
-    cluster: "arn:aws-us-gov:eks:us-gov-west-1:062032711895:cluster/stg"
-    config:
-      DOMAIN: "cs-stg.afdk.org"
-  prd:
-    cluster: "arn:aws-us-gov:eks:us-gov-west-1:062032711895:cluster/prd"
-    config:
-      DOMAIN: "cs.afdk.org"
-
-# DockerBuilds - list of local Dockerfiles to build for deployment
-DockerBuilds:
-  - dockerfilePath: "cs-api/Dockerfile"
-    contextDir: "cs-api"
-    image: "harbor.ex.afds.dev/kbr/cs-api"
-    buildArgs:
-      VERSION: "1.2.3"
-```
-
 ### Differential Builds
 
 For faster iterative development, use the `-d` flag to build only the differences from an existing package in the registry:
@@ -134,3 +104,73 @@ firefly --help
 ## Implementation
 
 Internally, firefly uses the go libraries for docker, helm, and zarf to build and deploy. The tool is written in pure golang and does not depend on extenal binaries.
+
+## Configuration
+
+### firefly.yaml
+
+The `firefly.yaml` file contains the project configuration for target deployment environments and local image builds. The Targets section contains what components to exclude or include relative to the defaults and any zarf variables that should be overridden for that environment. The Docker builds section includes the path to local Docker files, their context path, build arguments, and where their remote registry can be located.
+
+```yaml
+# Targets - map of target deployment environment names to configurations
+targets:
+  dev:
+    cluster: "arn:aws-us-gov:eks:us-gov-west-1:062032711895:cluster/dev"
+    kind: false
+    config:
+      DOMAIN: "cs-dev.afdk.org"
+  stg:
+    cluster: "arn:aws-us-gov:eks:us-gov-west-1:062032711895:cluster/stg"
+    config:
+      DOMAIN: "cs-stg.afdk.org"
+  prd:
+    cluster: "arn:aws-us-gov:eks:us-gov-west-1:062032711895:cluster/prd"
+    config:
+      DOMAIN: "cs.afdk.org"
+
+# DockerBuilds - list of local Dockerfiles to build for deployment
+DockerBuilds:
+  - dockerfilePath: "cs-api/Dockerfile"
+    contextDir: "cs-api"
+    image: "harbor.ex.afds.dev/kbr/cs-api"
+    buildArgs:
+      VERSION: "1.2.3"
+```
+
+### zarf.yaml
+
+#### Overrides
+
+Override files control Environment-specific configurations and provide a context for injecting zarf variables into chart values. Overrides for each zacf component are found in `firefly/overrides/[component name]/[env name].yaml`. The `base.yaml` Contains configurations that are applied to all environments and usually contain most zarf variable injections. At build time, Firefly will create a `generated.yaml` file that is a copy of the targeted environment override. Usually, every component will have these values files listed in its zarf.yaml setion:
+
+```yaml
+valuesFiles:
+  - overrides/[component name]/base.yaml
+  - overrides/[component name]/generated.yaml
+
+```
+
+### Secret Management
+
+Firefly manages secret values by decrypting them to the `firefly/secrets` folder at build time. These files are referenced in the zarf.yaml file as sensitive variables and generally injectioned into chart values in the base.yaml override file (see overrides section above).
+
+#### Adding Secrets
+
+**Prerequisit**: Must have an age key with access to decrypt the project secrets.
+
+For a secret named MY_SECRET,
+
+1. Add a file `firefly/secrets/MY_SECRET` containing secret value
+1. Add a variables to `firefly/zarf.yaml` like:
+
+  ```yaml
+  - name: MY_SECRET
+    default: "secrets/MY_SECRET"
+    type: file
+    autoIndent: true
+    sensitive: true
+```
+
+1. Inject variable into component base override at appropriate location with `###ZARF_VAR_MY_SECRET###`
+1. Run `firefly encrypt` to add new secret fire to encrypted archive
+1. Commit new `firefly/zarf-secrets.tar.gz.age`

@@ -4,20 +4,18 @@ agent: build
 ---
 # Task: Proofread Markdown Files
 
-1. Get the list of unstaged markdown files:
-!`git diff --name-only -- '*.md'`
+1. Determine the target files from `<target>`:
+   - If `<target>` is a file, use that file directly
+   - If `<target>` is a folder, find all markdown and text files:
+     !`find <target> -type f \( -name '*.md' -o -name '*.txt' \) 2>/dev/null | head -50`
 
-2. Get the diff for each unstaged markdown file:
-!`git diff -- '*.md'`
-
-3. For each file with unstaged changes, analyze and correct spelling, grammar, and punctuation errors:
-   - Read the current file content
+2. For each target file:
+   - Read the file content
    - Use the LLM to proofread and fix any spelling, grammar, or punctuation errors
    - Preserve the original meaning and intent
    - Only make minimal necessary changes
 
-4. Stage the corrected files:
-!`git add <corrected-files>`
+3. Show the diff of changed files:
+   !`git diff -- <target-files>`
 
-5. Show the final diff of staged changes:
-!`git diff --cached -- '*.md'`
+(End of file - total 22 lines)

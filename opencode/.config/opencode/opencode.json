@@ -13,6 +13,10 @@
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
+        "gemma4:e4b": {
+          "_launch": true,
+          "name": "gemma4:e4b"
+        },
         "qwen3:8b": {
           "tools": true
         }
@@ -78,7 +82,7 @@
       "kubectl apply *": "ask",
       "kubectl delete *": "ask",
       "glab api *": "ask",
-      "firefly deploy prd*": "ask",
+      "firefly deploy *": "ask",
       "systemctl *": "ask"
     },
     "doom_loop": "ask",
