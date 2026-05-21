@@ -23,4 +23,5 @@ function cb () {
 source <(kubectl completion zsh)
 source <(zarf completion zsh)
 source <(firefly completion zsh)
+source <(grype completion zsh)
 

@@ -1,0 +1,15 @@
+#!/bin/bash
+active=$(hyprctl activewindow -j)
+floating=$(echo "$active" | jq -r '.floating')
+addr=$(echo "$active" | jq -r '.address')
+
+if [ "$floating" = "true" ]; then
+    hyprctl dispatch togglefloating "address:$addr"
+fi
+
+hyprctl dispatch cyclenext
+hyprctl dispatch togglefloating
+hyprctl dispatch resizeactive exact 50% 90%
+hyprctl dispatch centerwindow
+hyprctl dispatch moveactive 200 -40
+~/.config/hypr/scripts/move-cursor-to-window

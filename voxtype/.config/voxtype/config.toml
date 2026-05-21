@@ -17,6 +17,8 @@ enabled = false
 [audio]
 # Audio input device ("default" uses system default)
 # List devices with: pactl list sources short
+# Pause MPRIS media players during recording
+pause_media = true
 device = "default"
 
 # Sample rate in Hz (whisper expects 16000)
@@ -94,4 +96,4 @@ on_transcription = false
 # spoken_punctuation = false
 #
 # Custom word replacements (case-insensitive)
-replacements = { "knife eye" = "NiFi" }
+replacements = { "knife eye" = "NiFi", "Chris" = "Cris", "Firefly" = "firefly" }

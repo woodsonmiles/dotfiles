@@ -1,0 +1,10 @@
+{
+  "SKIP_HOST_UPDATE": true,
+  "openH264Enabled": true,
+  "offloadAdmControls": true,
+  "enableLibOpenH264Electron": true,
+  "chromiumSwitches": {},
+  "BACKGROUND_COLOR": "#121214",
+  "IS_MAXIMIZED": true,
+  "IS_MINIMIZED": false
+}

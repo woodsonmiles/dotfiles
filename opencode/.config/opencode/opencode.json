@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "opencode/big-pickle",
+  "model": "opencode-go/deepseek-v4-pro",
   "plugin": [
     "@mohak34/opencode-notifier@latest"
   ],
@@ -24,6 +24,11 @@
     }
   },
   "mcp": {
+    "glab": {
+      "type": "local",
+      "command": ["glab", "mcp", "serve"],
+      "enabled": true
+    },
     "kubectl-mcp": {
       "type": "local",
       "command": ["/home/wmiles/.kube-mcp-venv/bin/kubectl-mcp"],
