@@ -96,4 +96,4 @@ on_transcription = false
 # spoken_punctuation = false
 #
 # Custom word replacements (case-insensitive)
-replacements = { "knife eye" = "NiFi", "Chris" = "Cris", "Firefly" = "firefly" }
+replacements = { "knife eye" = "NiFi", "Chris" = "Cris", "Firefly" = "firefly", "ZARF" = "Zarf", "kui" = "CUI" }

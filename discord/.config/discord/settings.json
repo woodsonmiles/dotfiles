@@ -6,5 +6,6 @@
   "chromiumSwitches": {},
   "BACKGROUND_COLOR": "#121214",
   "IS_MAXIMIZED": true,
-  "IS_MINIMIZED": false
+  "IS_MINIMIZED": false,
+  "DESKTOP_TTI_UPDATE_BACKOFF_MAX_MS": 10000
 }
