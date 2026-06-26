@@ -7,6 +7,14 @@ alias f="firefly"
 alias k="kubectl"
 
 # funtions
+function fr () {
+  [ $# -lt 2 ] && { echo "Usage: fr <search> <replace>"; return 1; }
+  export SEARCH="$1" REPLACE="$2"
+  rg -l -F --hidden "$1" | while IFS= read -r file; do
+    perl -pi -e 's/\Q$ENV{SEARCH}\E/$ENV{REPLACE}/g' "$file"
+  done
+}
+
 function qf () {
   git commit -a --fixup=HEAD
 }
