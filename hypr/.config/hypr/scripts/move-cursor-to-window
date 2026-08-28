@@ -1,8 +1,10 @@
 #!/bin/bash
+set -euo pipefail
+
 sleep 0.1
 WIN=$(hyprctl activewindow -j)
 if [ -n "$WIN" ]; then
   X=$(echo "$WIN" | jq -r '.at[0] + (.size[0] / 2)')
   Y=$(echo "$WIN" | jq -r '.at[1] + (.size[1] / 2)')
-  hyprctl dispatch movecursor "$X" "$Y"
+  hyprctl dispatch "hl.dsp.cursor.move({ x = $X, y = $Y })"
 fi

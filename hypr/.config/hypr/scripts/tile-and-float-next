@@ -1,15 +1,28 @@
 #!/bin/bash
+set -euo pipefail
+
 active=$(hyprctl activewindow -j)
 floating=$(echo "$active" | jq -r '.floating')
 addr=$(echo "$active" | jq -r '.address')
 
 if [ "$floating" = "true" ]; then
-    hyprctl dispatch togglefloating "address:$addr"
+    hyprctl dispatch "hl.dsp.window.float({ action = \"unset\", window = \"address:$addr\" })"
 fi
 
-hyprctl dispatch cyclenext
-hyprctl dispatch togglefloating
-hyprctl dispatch resizeactive exact 50% 90%
-hyprctl dispatch centerwindow
-hyprctl dispatch moveactive 200 -40
-~/.config/hypr/scripts/move-cursor-to-window
+monitor_id=$(hyprctl activewindow -j | jq -r '.monitor // empty')
+read -r monitor_width monitor_height reserved_top < <(
+    hyprctl monitors -j |
+        jq -r --argjson id "$monitor_id" \
+            '.[] | select(.id == $id) | "\((.width / .scale) | round) \((.height / .scale) | round) \((.reserved[1] / .scale) | round)"'
+)
+window_width=$((monitor_width / 2))
+window_height=$((monitor_height * 90 / 100))
+target_x=$(((monitor_width - window_width) / 2 + 200))
+target_y=$(((monitor_height - window_height) / 2 - reserved_top))
+
+hyprctl dispatch 'hl.dsp.window.cycle_next()'
+hyprctl dispatch 'hl.dsp.window.float({ action = "toggle" })'
+hyprctl dispatch "hl.dsp.window.resize({ x = $window_width, y = $window_height })"
+hyprctl dispatch "hl.dsp.window.move({ x = $target_x, y = $target_y })"
+
+"$HOME/.config/hypr/scripts/move-cursor-to-window"
